@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.io.File;
@@ -60,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
     private void initVideoView() {
         //获取到根目录下的movie.mp4文件
         File file = new File(Environment.getExternalStorageDirectory(), "movie.mp4");
+        if (file.exists()) {
+            Toast.makeText(this, "请复制一个.mp4到根目录下\n并重命名为movie", Toast.LENGTH_LONG).show();
+            return;
+        }
         videoView.setVideoPath(file.getPath());
     }
 
